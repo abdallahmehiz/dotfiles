@@ -1,0 +1,170 @@
+{
+    "layer": "top",
+    "height": 34,
+    "spacing": 4,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-top": 10,
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "custom/seperator",
+        "cpu",
+        "custom/seperator",
+        "memory"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/seperator",
+        // "network#speed",
+        //"custom/seperator",
+        "pulseaudio#microphone",
+        "pulseaudio",
+        "custom/seperator",
+        // "bluetooth",
+        // "custom/seperator",
+        "network",
+        "custom/seperator",
+        "backlight",
+        "custom/seperator",
+        "battery"
+    ],
+    "custom/seperator": {
+        "format": "|"
+    },
+    // Left Side Modules
+    "custom/launcher": {
+        "format": "",
+        "on-click": "wofi --show drun"
+    },
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": "󰧞",
+            "sort-by-number": true
+        }
+    },
+    "cpu": {
+        "format": "CPU:{usage}%",
+        "interval": 1,
+        "tooltip": true,
+        "tooltip-format": "{usage}%"
+    },
+    "memory": {
+        "format": "MEM:{percentage}%",
+        "interval": 1,
+        "tooltip": true,
+        "tooltip-format": "{used}GB/{total}GB"
+    },
+    // Center Modules
+    "clock": {
+        "format": "{:%H:%M:%OS}",
+        "interval": 1,
+        "tooltip": true,
+        "tooltip-format": "{:%d/%m/%y\t-\t%H:%M}"
+    },
+    // Right Side Modules
+    "tray": {
+        "spacing": 4
+    },
+    // "network#speed": {
+    //     "format": "UL:{bandwidthUpBytes}\nDL:{bandwidthDownBytes}",
+    //     "interval": 1,
+    // },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " muted",
+        "on-click": "~/.config/waybar/volume in mute",
+        "on-scroll-up": "~/.config/waybar/volume in inc",
+        "on-scroll-down": "~/.config/waybar/volume in dec",
+        "on-double-click": "pavucontrol",
+        "scroll-step": 5
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon}",
+        "scroll-step": 5,
+        "format-muted": "󰝟 muted",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "on-click": "~/.config/waybar/volume out mute",
+        "on-scroll-up": "~/.config/waybar/volume out inc",
+        "on-scroll-down": "~/.config/waybar/volume out dec",
+        "on-double-click": "pavucontrol",
+        "ignored-sinks": [
+            "Easy Effects Sink"
+        ]
+    },
+    // "bluetooth": {
+    //     "format": "󰂯",
+    //     "format-off": "󰂰",
+    //     "format-connected": "󰂱 {device_alias}",
+    //     "format-connected-battery": "󰂱 {device_alias} {device_battery_percentage}%",
+    //     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    //     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    //     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    //     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    //     "on-double-click": "blueman-manager",
+    // },
+    "network": {
+        "interface": "wlp2s0",
+        "format": "{ifname}",
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click-right": "pkill nm-applet",
+        "on-double-click": "nm-applet"
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "bat": "BAT0",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}% ",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰂄"
+        ],
+        "max-length": 25
+    }
+}

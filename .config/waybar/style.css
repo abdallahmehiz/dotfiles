@@ -1,0 +1,26 @@
+* {
+  font-family: JetBrains Mono Nerd Font, monospace;
+  font-size: 14px;
+  color: #DBDBDB;
+}
+
+window#waybar {
+  background-color: #242424;
+  border: 1px solid #DBDBDB;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+#battery {
+  padding: 0 10px 0 0;
+}
+
+#custom-launcher {
+  padding: 0 0 0 10px;
+}
+
+#network,
+#pulseaudio,
+#tray {
+  padding: 0 2px;
+}

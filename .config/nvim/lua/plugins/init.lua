@@ -1,0 +1,7 @@
+require "plugins.lazy"
+require "plugins.comment"
+require "plugins.nvim-tree"
+require "plugins.telescope"
+require "plugins.autopairs"
+require "plugins.treesitter"
+require "plugins.gitsigns"

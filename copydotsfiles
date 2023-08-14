@@ -1,0 +1,49 @@
+#!/bin/bash
+# TODO Optimize this script's performance even though it doesn't *really* matter
+
+copy_to_dots() {
+    dots_folder_path="$1"
+    shift
+    mkdir -p "$dots_folder_path"
+
+    for source_path in "$@"; do
+        source=$(eval echo "$source_path")
+        if [ -e "$source" ]; then
+            dest_name=$(basename "$source")
+            dest_folder="$dots_folder_path/$(dirname "$(realpath --relative-to="$HOME" "$source")")"
+            destination="$dest_folder/$dest_name"
+
+            if [ -e "$destination" ]; then
+                echo "File/Folder $dest_name is Already in $dots_folder_path. Skipped."
+            else
+                if [ -d "$source" ]; then
+                    mkdir -p "$dest_folder"
+                    cp -r "$source" "$destination"
+                else
+                    mkdir -p "$dest_folder"
+                    cp "$source" "$destination"
+                fi
+                echo "File/Folder '$dest_name' copied to $dots_folder_path."
+            fi
+        else
+            echo "File/Folder '$source' does not exist. Skipping."
+        fi
+    done
+}
+
+items_to_copy=(
+    "~/.zshrc"  # Zsh config
+    "~/.gitconfig"  # Git config
+    "~/.config/nvim"  # Neovim
+    "~/.config/hyr"  # Zsh
+    "~/.config/waybar"  # Waybar
+    "~/.config/dunst"  # Dunst
+    "~/.config/gtk-3.0"  # GTK
+    "~/.config/kitty"  # Alacritty
+    "~/.wallpapers"  # Wallpapers
+)
+
+dots_folder_path=~/.dots
+
+copy_to_dots "$dots_folder_path" "${items_to_copy[@]}"
+
