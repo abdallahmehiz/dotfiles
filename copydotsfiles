@@ -1,5 +1,4 @@
 #!/bin/bash
-# TODO Optimize this script's performance even though it doesn't *really* matter
 
 copy_to_dots() {
     dots_folder_path="$1"
@@ -8,26 +7,18 @@ copy_to_dots() {
 
     for source_path in "$@"; do
         source=$(eval echo "$source_path")
-        if [ -e "$source" ]; then
-            dest_name=$(basename "$source")
-            dest_folder="$dots_folder_path/$(dirname "$(realpath --relative-to="$HOME" "$source")")"
-            destination="$dest_folder/$dest_name"
+        dest_name=$(basename "$source")
+        relative_source="$(realpath --relative-to="$HOME" "$source")"
+        dest_folder="$dots_folder_path/$(dirname "$relative_source")"
+        destination="$dest_folder/"
 
-            if [ -e "$destination" ]; then
-                echo "File/Folder $dest_name is Already in $dots_folder_path. Skipped."
-            else
-                if [ -d "$source" ]; then
-                    mkdir -p "$dest_folder"
-                    cp -r "$source" "$destination"
-                else
-                    mkdir -p "$dest_folder"
-                    cp "$source" "$destination"
-                fi
-                echo "File/Folder '$dest_name' copied to $dots_folder_path."
-            fi
+        mkdir -p "$dest_folder"
+        if [ -d "$source" ]; then
+            cp -r "$source" "$destination"
         else
-            echo "File/Folder '$source' does not exist. Skipping."
+            cp "$source" "$destination"
         fi
+        echo "File/Folder '$dest_name' copied to $dots_folder_path."
     done
 }
 
@@ -35,7 +26,7 @@ items_to_copy=(
     "~/.zshrc"  # Zsh config
     "~/.gitconfig"  # Git config
     "~/.config/nvim"  # Neovim
-    "~/.config/hyr"  # Zsh
+    "~/.config/hypr"  # Zsh
     "~/.config/waybar"  # Waybar
     "~/.config/dunst"  # Dunst
     "~/.config/gtk-3.0"  # GTK
@@ -46,4 +37,3 @@ items_to_copy=(
 dots_folder_path=~/.dots
 
 copy_to_dots "$dots_folder_path" "${items_to_copy[@]}"
-
