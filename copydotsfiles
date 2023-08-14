@@ -26,7 +26,7 @@ items_to_copy=(
     "~/.zshrc"  # Zsh config
     "~/.gitconfig"  # Git config
     "~/.config/nvim"  # Neovim
-    "~/.config/hypr"  # Zsh
+    "~/.config/hypr"  # Hyprland
     "~/.config/waybar"  # Waybar
     "~/.config/dunst"  # Dunst
     "~/.config/gtk-3.0"  # GTK
