@@ -32,6 +32,7 @@ items_to_copy=(
     "~/.config/gtk-3.0"  # GTK
     "~/.config/kitty"  # Alacritty
     "~/.config/mpv"  # mpv
+    "~/.config/rofi"  # Rofi
     "~/.wallpapers"  # Wallpapers
 )
 
