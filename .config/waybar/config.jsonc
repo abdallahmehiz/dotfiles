@@ -11,7 +11,9 @@
         "custom/seperator",
         "cpu",
         "custom/seperator",
-        "memory"
+        "memory",
+        "custom/seperator",
+        "network#speed"
     ],
     "modules-center": [
         "clock"
@@ -19,8 +21,6 @@
     "modules-right": [
         "tray",
         "custom/seperator",
-        // "network#speed",
-        //"custom/seperator",
         "pulseaudio#microphone",
         "pulseaudio",
         "custom/seperator",
@@ -72,16 +72,16 @@
         "format": "{:%H:%M:%OS}",
         "interval": 1,
         "tooltip": true,
-        "tooltip-format": "{:%d/%m/%y\t-\t%H:%M}"
+        "tooltip-format": "{:%A %d/%m/%y\t-\t%H:%M}"
     },
     // Right Side Modules
     "tray": {
         "spacing": 4
     },
-    // "network#speed": {
-    //     "format": "UL:{bandwidthUpBytes}\nDL:{bandwidthDownBytes}",
-    //     "interval": 1,
-    // },
+    "network#speed": {
+        "format": "{bandwidthDownBytes}/{bandwidthUpBytes}",
+        "interval": 1
+    },
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "format-source": " {volume}%",

@@ -31,9 +31,10 @@ items_to_copy=(
     "~/.config/dunst"  # Dunst
     "~/.config/gtk-3.0"  # GTK
     "~/.config/kitty"  # Alacritty
+    "~/.config/mpv"  # mpv
     "~/.wallpapers"  # Wallpapers
 )
 
-dots_folder_path=~/.dots
+dots_folder_path=.
 
 copy_to_dots "$dots_folder_path" "${items_to_copy[@]}"

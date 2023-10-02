@@ -22,7 +22,7 @@ local plugins = {
   "numToStr/Comment.nvim",  -- Comment plugin for Neovim
   "mattn/emmet-vim",        -- Emmet for neovim
   "mg979/vim-visual-multi", -- Multi-cursor
-
+  "mhartington/formatter.nvim", -- Formatter
   -- UI
   "kyazdani42/nvim-web-devicons", -- Icons for neovim
   "romgrk/barbar.nvim",           -- Better looking tabs
@@ -64,6 +64,10 @@ local plugins = {
 
   -- Git plugins
   "lewis6991/gitsigns.nvim", -- Git signs
+
+  -- Misc
+  "akinsho/toggleterm.nvim"
+
 }
 
 require("lazy").setup(plugins)
