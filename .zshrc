@@ -126,8 +126,13 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
+
 eval $(thefuck --alias)
 
 # Alias some very good tools
 alias cat="bat"
 alias ls="eza"
+
+# LaTeX Related
+export TEXMFDIST="/usr/share/texmf-dist"
+alias tlmgr='$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'

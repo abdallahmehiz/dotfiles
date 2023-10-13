@@ -21,6 +21,8 @@
     "modules-right": [
         "tray",
         "custom/seperator",
+        "hyprland/language",
+        "custom/seperator",
         "pulseaudio#microphone",
         "pulseaudio",
         "custom/seperator",
@@ -67,6 +69,10 @@
         "tooltip": true,
         "tooltip-format": "{used}GB/{total}GB"
     },
+    "network#speed": {
+        "format": "{bandwidthDownBytes}/{bandwidthUpBytes}",
+        "interval": 1
+    },
     // Center Modules
     "clock": {
         "format": "{:%H:%M:%OS}",
@@ -78,10 +84,9 @@
     "tray": {
         "spacing": 4
     },
-    "network#speed": {
-        "format": "{bandwidthDownBytes}/{bandwidthUpBytes}",
-        "interval": 1
-    },
+    "hyprland/language": {
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+    },   
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "format-source": " {volume}%",
