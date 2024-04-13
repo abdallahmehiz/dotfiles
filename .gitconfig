@@ -1,7 +1,7 @@
 [user]
 	email = abdallahmehiz0@gmail.com
 	signingkey = C20F096DC8DF7C7AF9A59AD1975266399F5BAF34
-	name = Abdallah Mehiz
+	name = AbdallahMehiz
 [commit]
 	gpgsign = true
 [safe]
@@ -12,3 +12,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[core]
+	compression = 0

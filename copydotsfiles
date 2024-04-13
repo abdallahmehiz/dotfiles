@@ -1,39 +1,40 @@
 #!/bin/bash
 
 copy_to_dots() {
-    dots_folder_path="$1"
-    shift
-    mkdir -p "$dots_folder_path"
+	dots_folder_path="$1"
+	shift
+	mkdir -p "$dots_folder_path"
 
-    for source_path in "$@"; do
-        source=$(eval echo "$source_path")
-        dest_name=$(basename "$source")
-        relative_source="$(realpath --relative-to="$HOME" "$source")"
-        dest_folder="$dots_folder_path/$(dirname "$relative_source")"
-        destination="$dest_folder/"
+	for source_path in "$@"; do
+		source=$(eval echo "$source_path")
+		dest_name=$(basename "$source")
+		relative_source="$(realpath --relative-to="$HOME" "$source")"
+		dest_folder="$dots_folder_path/$(dirname "$relative_source")"
+		destination="$dest_folder/"
 
-        mkdir -p "$dest_folder"
-        if [ -d "$source" ]; then
-            cp -r "$source" "$destination"
-        else
-            cp "$source" "$destination"
-        fi
-        echo "File/Folder '$dest_name' copied to $dots_folder_path."
-    done
+		mkdir -p "$dest_folder"
+		if [ -d "$source" ]; then
+			cp -r "$source" "$destination"
+		else
+			cp "$source" "$destination"
+		fi
+		echo "File/Folder '$dest_name' copied to $dots_folder_path."
+	done
 }
 
 items_to_copy=(
-    "~/.zshrc"  # Zsh config
-    "~/.gitconfig"  # Git config
-    "~/.config/nvim"  # Neovim
-    "~/.config/hypr"  # Hyprland
-    "~/.config/waybar"  # Waybar
-    "~/.config/dunst"  # Dunst
-    "~/.config/gtk-3.0"  # GTK
-    "~/.config/kitty"  # Alacritty
-    "~/.config/mpv"  # mpv
-    "~/.config/rofi"  # Rofi
-    "~/.wallpapers"  # Wallpapers
+	"~/.zshrc"     # Zsh config
+	"~/.gitconfig" # Git config
+	# "~/.config/nvim"  # Neovim # Using lazyvim for now
+	"~/.config/hypr"   # Hyprland
+	"~/.config/waybar" # Waybar
+	# "~/.config/dunst"   # Dunst # Converted to using mako
+	# "~/.config/gtk-3.0" # GTK
+	"~/.config/kitty" # Alacritty
+	"~/.config/mpv"   # mpv
+	"~/.config/rofi"  # Rofi
+	"~/.config/mako"  # Mako
+	"~/.wallpapers"   # Wallpapers
 )
 
 dots_folder_path=.

@@ -115,8 +115,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export JAVA_HOME=/usr/lib/jvm/java-20-openjdk
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/jvm/java-20-openjdk/bin
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 
@@ -130,9 +128,39 @@ export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 eval $(thefuck --alias)
 
 # Alias some very good tools
-alias cat="bat"
-alias ls="eza"
+export PATH="$PATH:/home/abdallah/.local/share/JetBrains/Toolbox/apps/android-studio/jbr/bin/:/home/abdallah/Android/Flutter/bin/:/opt/google/chrome/chrome"
+export CHROME_EXECUTABLE="/usr/bin/chromium"
 
-# LaTeX Related
-export TEXMFDIST="/usr/share/texmf-dist"
-alias tlmgr='$TEXMFDIST/scripts/texlive/tlmgr.pl --usermode'
+# pnpm
+export PNPM_HOME="/home/abdallah/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export PATH=$PATH:/home/abdallah/.local/bin/
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+export HOME=/home/abdallah
+
+export PATH=$PATH:/home/abdallah/Android/flutter/bin
+export PATH=$PATH:/home/abdallah/Android/Sdk/emulator
+export PATH=$PATH:/home/abdallah/Android/Sdk/cmdline-tools/latest/bin/
+export HISTSIZE=100000
+
+export ANDROID_SDK_ROOT=/home/abdallah/Android/sdk/
+export ANDROID_HOME=/home/abdallah/Android/sdk/
+
+alias yeet='yay -Rsn $(yay -Qdtq)'
+
+alias vim=nvim
+
+export PATH="/home/abdallah/bin:$PATH"
+export PATH="/home/abdallah/Downloads/picaxe/:$PATH"
+
+alias please=sudo
+export TERM=xterm-256color
+
+export PATH="/home/abdallah/.local/share/JetBrains/Toolbox/apps/android-studio/jbr/bin/:$PATH"
+export JAVA_HOME="/home/abdallah/.local/share/JetBrains/Toolbox/apps/android-studio/jbr/"
+export PATH="/home/abdallah/Android/Sdk/build-tools/34.0.0/:$PATH"

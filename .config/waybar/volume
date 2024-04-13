@@ -6,28 +6,26 @@ type="$1"
 output_volume=$(pamixer --get-volume)
 
 if [ "$type" = "out" ]; then
-  if [ "$direction" = "inc" ]; then
-      if [ "$output_volume" -lt 100 ]; then
-          wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
-      fi
-  elif [ "$direction" = "dec" ]; then
-      wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
-  elif [ "$direction" = "mute" ]; then
-      wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-  fi
-  exit
+	if [ "$direction" = "inc" ]; then
+		if [ "$output_volume" -lt 100 ]; then
+			wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
+		fi
+	elif [ "$direction" = "dec" ]; then
+		wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
+	elif [ "$direction" = "mute" ]; then
+		wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+	fi
+	exit
 fi
 
 input_volume=$(pamixer --get-volume --default-source)
 
 if [ "$type" = "in" ]; then
-  if [ "$direction" = "inc" ]; then
-    if [ "$input_volume" -lt 100 ]; then
-        wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+
-    fi
-  elif [ "$direction" = "dec" ]; then
-      wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-
-  elif [ "$direction" = "mute" ]; then
-      wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-  fi
+	if [ "$direction" = "inc" ]; then
+		wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+
+	elif [ "$direction" = "dec" ]; then
+		wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-
+	elif [ "$direction" = "mute" ]; then
+		wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+	fi
 fi
